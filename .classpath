@@ -5,5 +5,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/pasa_cbentley_core_src4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pasa_cbentley_core_src5"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pasa_cbentley_framework_coredata_src4"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pasa_cbentley_byteobjects_src4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

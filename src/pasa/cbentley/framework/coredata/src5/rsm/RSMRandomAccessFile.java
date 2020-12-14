@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.coredata.src5.rsm;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -13,12 +13,15 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Hashtable;
 
-import pasa.cbentley.framework.coredata.src4.ctx.CoreDataCtx;
 import pasa.cbentley.framework.coredata.src4.ex.StoreException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
 import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.coredata.src5.engine.FilenameFilterRecordStore;
+import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
+import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
 
 /**
  * A {@link RSMRandomAccessFile} write to disk.
@@ -56,20 +59,20 @@ import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
 <li>"rws"   Open for reading and writing, as with "rw", and also require that every update to the file's content or metadata be written synchronously to the underlying storage device.
 <li>"rwd"       Open for reading and writing, as with "rw", and also require that every update to the file's content be written synchronously to the underlying storage device. 
 
- * @author Mordan
+ * @author Charles-Philip Bentley
  *
  */
 public class RSMRandomAccessFile extends RSMFileBased implements IRecordStoreManager {
 
    private static final int                      BASE_RECORD      = 0;
 
-   private FilenameFilter                        filter           = new FnFilter();
+   private FilenameFilter                        filter           = new FilenameFilterRecordStore();
 
    private ExtendedRecordListener                recordListener   = null;
 
    private Hashtable<String, RecordStoreHashMap> openRecordStores = new Hashtable<String, RecordStoreHashMap>();
 
-   public RSMRandomAccessFile(CoreDataCtx hoc, File suitFolder) {
+   public RSMRandomAccessFile(CoreData5Ctx hoc, File suitFolder) {
       super(hoc, suitFolder);
    }
 
@@ -171,7 +174,7 @@ public class RSMRandomAccessFile extends RSMFileBased implements IRecordStoreMan
          if (!createIfNecessary) {
             throw new StoreNotFoundException(recordStoreName);
          }
-         recordStoreImpl = new RecordStoreHashMap(this, recordStoreName);
+         recordStoreImpl = new RecordStoreHashMap(hoc, this, recordStoreName);
          saveToDiskSecure(storeFile, recordStoreImpl);
       }
       recordStoreImpl.setOpen(true);

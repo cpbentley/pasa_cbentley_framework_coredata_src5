@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.coredata.src5.rsm;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -12,12 +12,15 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Hashtable;
 
-import pasa.cbentley.framework.coredata.src4.ctx.CoreDataCtx;
 import pasa.cbentley.framework.coredata.src4.ex.StoreException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
 import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.coredata.src5.engine.FilenameFilterRecordStore;
+import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
+import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
 
 /**
  * A {@link RSMFileSequential} write to disk.
@@ -27,25 +30,23 @@ import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
  * for suchs environments.
  * <br>
  * <br>
- * @author Mordan
+ * @author Charles-Philip Bentley
  *
  */
 public class RSMFileSequential extends RSMFileBased implements IRecordStoreManager {
-
-   final static String               RECORD_STORE_SUFFIX = ".rs";
 
 
    private static final int          BASE_RECORD         = 0;
 
    private File                                  baseFolder;
 
-   private FilenameFilter                        filter           = new FnFilter();
+   private FilenameFilter                        filter           = new FilenameFilterRecordStore();
 
    private ExtendedRecordListener                recordListener   = null;
 
    private Hashtable<String, RecordStoreHashMap> openRecordStores = new Hashtable<String, RecordStoreHashMap>();
 
-   public RSMFileSequential(CoreDataCtx hoc, File suitFolder) {
+   public RSMFileSequential(CoreData5Ctx hoc, File suitFolder) {
       super(hoc,suitFolder);
       baseFolder = suitFolder;
    }
@@ -146,7 +147,7 @@ public class RSMFileSequential extends RSMFileBased implements IRecordStoreManag
          if (!createIfNecessary) {
             throw new StoreNotFoundException(recordStoreName);
          }
-         recordStoreImpl = new RecordStoreHashMap(this, recordStoreName);
+         recordStoreImpl = new RecordStoreHashMap(hoc,this, recordStoreName);
          saveToDiskSecure(storeFile, recordStoreImpl);
       }
       recordStoreImpl.setOpen(true);

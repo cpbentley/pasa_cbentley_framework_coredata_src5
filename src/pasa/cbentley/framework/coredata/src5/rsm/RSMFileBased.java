@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.coredata.src5.rsm;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -15,14 +15,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-import pasa.cbentley.framework.coredata.src4.ctx.CoreDataCtx;
 import pasa.cbentley.framework.coredata.src4.ex.StoreException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
 import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.coredata.src5.engine.FilenameFilterRecordStore;
+import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
+import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
 
-public abstract class RSMFileBased extends RecordStoreManagerAbstract implements IRecordStoreManager {
+public abstract class RSMFileBased extends RSMAbstract implements IRecordStoreManager {
 
    final static String          RECORD_STORE_SUFFIX = ".rs";
 
@@ -59,13 +62,13 @@ public abstract class RSMFileBased extends RecordStoreManagerAbstract implements
 
    protected File                                  baseFolder;
 
-   protected FilenameFilter                        filter           = new FnFilter();
+   protected FilenameFilter                        filter           = new FilenameFilterRecordStore();
 
    protected ExtendedRecordListener                recordListener   = null;
 
    protected Hashtable<String, RecordStoreHashMap> openRecordStores = new Hashtable<String, RecordStoreHashMap>();
 
-   public RSMFileBased(CoreDataCtx hoc, File suitFolder) {
+   public RSMFileBased(CoreData5Ctx hoc, File suitFolder) {
       super(hoc);
       baseFolder = suitFolder;
       replaceChars.add(":");
@@ -151,7 +154,7 @@ public abstract class RSMFileBased extends RecordStoreManagerAbstract implements
       RecordStoreHashMap store = null;
       try {
          DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(recordStoreFile)));
-         store = new RecordStoreHashMap(hoc,this, dis);
+         store = new RecordStoreHashMap(hoc, this, dis);
          dis.close();
       } catch (FileNotFoundException e) {
          throw e;
@@ -175,7 +178,7 @@ public abstract class RSMFileBased extends RecordStoreManagerAbstract implements
          if (!createIfNecessary) {
             throw new StoreNotFoundException(recordStoreName);
          }
-         recordStoreImpl = new RecordStoreHashMap(this, recordStoreName);
+         recordStoreImpl = new RecordStoreHashMap(hoc, this, recordStoreName);
          saveToDiskSecure(storeFile, recordStoreImpl);
       }
       recordStoreImpl.setOpen(true);

@@ -1,14 +1,16 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.coredata.src5.rsm;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.coredata.src4.ctx.CoreDataCtx;
 import pasa.cbentley.framework.coredata.src4.ex.StoreException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
 import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
+import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
 
 /**
  * RecordStore loaded when {@link RSMFileSequential} failed to load for any reason.
@@ -16,10 +18,10 @@ import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
  * This allows application to work but unable to save its state.
  * <br>
  * <br>
- * @author Mordan
+ * @author Charles-Philip Bentley
  *
  */
-public class RSMPureMemory extends RecordStoreManagerAbstract implements IRecordStoreManager {
+public class RSMPureMemory extends RSMAbstract implements IRecordStoreManager {
 
    private ExtendedRecordListener                recordListener = null;
 
@@ -28,7 +30,7 @@ public class RSMPureMemory extends RecordStoreManagerAbstract implements IRecord
     */
    private Hashtable<String, RecordStoreHashMap> recordStores   = new Hashtable<String, RecordStoreHashMap>();
 
-   public RSMPureMemory(CoreDataCtx hoc) {
+   public RSMPureMemory(CoreData5Ctx hoc) {
       super(hoc);
    }
 
@@ -99,7 +101,7 @@ public class RSMPureMemory extends RecordStoreManagerAbstract implements IRecord
          if (!createIfNecessary) {
             throw new StoreNotFoundException(recordStoreName);
          }
-         recordStoreImpl = new RecordStoreHashMap(this, recordStoreName);
+         recordStoreImpl = new RecordStoreHashMap(hoc,this, recordStoreName);
          recordStores.put(recordStoreName, recordStoreImpl);
       }
       recordStoreImpl.setOpen(true);

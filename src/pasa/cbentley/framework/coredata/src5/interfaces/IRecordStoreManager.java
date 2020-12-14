@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.coredata.src5.interfaces;
 
 import pasa.cbentley.core.src4.logging.IStringable;
 import pasa.cbentley.framework.coredata.src4.ex.StoreException;
@@ -6,6 +6,9 @@ import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
 import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
+import pasa.cbentley.framework.coredata.src5.rsm.RSMFileBased;
+import pasa.cbentley.framework.coredata.src5.rsm.RSMFileSequential;
 
 /**
  * Interface used by the bridge to access {@link IRecordStore} evil static methods
@@ -18,7 +21,7 @@ import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
  * Currently a reference abstract implementation by {@link RSMFileBased}.
  * <br>
  * 
- * @author Mordan
+ * @author Charles-Philip Bentley
  * @see RSMFileBased
  * @see RSMFileSequential
  * 

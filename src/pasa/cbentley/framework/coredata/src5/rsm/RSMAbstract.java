@@ -1,14 +1,15 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.coredata.src5.rsm;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.coredata.src4.ctx.CoreDataCtx;
+import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
 
-public abstract class RecordStoreManagerAbstract implements IRecordStoreManager {
+public abstract class RSMAbstract implements IRecordStoreManager {
 
-   protected final CoreDataCtx hoc;
+   protected final CoreData5Ctx hoc;
 
-   public RecordStoreManagerAbstract(CoreDataCtx hoc) {
+   public RSMAbstract(CoreData5Ctx hoc) {
       this.hoc = hoc;
    }
 

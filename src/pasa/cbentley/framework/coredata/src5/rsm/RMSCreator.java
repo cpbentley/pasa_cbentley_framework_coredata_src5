@@ -1,11 +1,12 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.coredata.src5.rsm;
 
-import pasa.cbentley.framework.coredata.src4.ctx.CoreDataCtx;
+import pasa.cbentley.framework.coredata.src4.db.IByteRecordStoreFactory;
 import pasa.cbentley.framework.coredata.src4.ex.StoreException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreFullException;
 import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRMSCreator;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
 
 /**
  * Bentley Framework visible side of the backend
@@ -15,16 +16,16 @@ import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
  * @author Charles Bentley
  *
  */
-public class RMSCreator implements IRMSCreator {
+public class RMSCreator implements IByteRecordStoreFactory {
 
-   private CoreDataCtx dd;
+   protected final CoreData5Ctx dd;
 
    /**
     * 
     */
-   IRecordStoreManager   rsm;
+   IRecordStoreManager          rsm;
 
-   public RMSCreator(CoreDataCtx dd, IRecordStoreManager br) {
+   public RMSCreator(CoreData5Ctx dd, IRecordStoreManager br) {
       this.dd = dd;
       rsm = br;
    }

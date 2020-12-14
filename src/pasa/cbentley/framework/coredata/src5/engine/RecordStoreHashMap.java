@@ -24,13 +24,15 @@ import pasa.cbentley.framework.coredata.src4.interfaces.IRecordEnumeration;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordFilter;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordListener;
 import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
 
 /**
  * Implementation of {@link IRecordStore} using {@link Hashtable}.
  * <br>
  * <br>
  * 
- * @author Mordan
+ * @author Charles-Philip Bentley
  *
  */
 public class RecordStoreHashMap implements IRecordStore {
@@ -68,9 +70,9 @@ public class RecordStoreHashMap implements IRecordStore {
 
    private static final int                  VER             = 45677;
 
-   private CoreDataCtx                           cdc;
+   protected final CoreData5Ctx                      cdc;
 
-   public RecordStoreHashMap(CoreDataCtx hoc, IRecordStoreManager recordStoreManager, DataInputStream dis) throws IOException {
+   public RecordStoreHashMap(CoreData5Ctx hoc, IRecordStoreManager recordStoreManager, DataInputStream dis) throws IOException {
       this.cdc = hoc;
       this.recordStoreManager = recordStoreManager;
 
@@ -107,7 +109,8 @@ public class RecordStoreHashMap implements IRecordStore {
     * @param recordStoreManager
     * @param recordStoreName
     */
-   public RecordStoreHashMap(IRecordStoreManager recordStoreManager, String recordStoreName) {
+   public RecordStoreHashMap(CoreData5Ctx hoc, IRecordStoreManager recordStoreManager, String recordStoreName) {
+      this.cdc = hoc;
       this.recordStoreManager = recordStoreManager;
       if (recordStoreName.length() <= 32) {
          this.recordStoreName = recordStoreName;
