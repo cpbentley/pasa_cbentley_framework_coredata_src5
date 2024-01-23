@@ -9,6 +9,10 @@ import pasa.cbentley.framework.coredata.src4.ctx.IConfigCoreData;
  */
 public interface IConfigCoreData5 extends IConfigCoreData {
 
+   /**
+    * 
+    * @return
+    */
    public String getRMSPath();
 
    /**

@@ -25,6 +25,9 @@ public class CoreData5Ctx extends CoreDataCtx {
    public CoreData5Ctx(IConfigCoreData5 config, BOCtx boc) {
       super(config, boc);
       this.config = config;
+      
+      //#debug
+      toDLog().pInit("Created", this, CoreData5Ctx.class, "CoreData5Ctx", LVL_05_FINE, true);
    }
 
    protected void applySettings(ByteObject settingsNew, ByteObject settingsOld) {
