@@ -16,16 +16,17 @@ import pasa.cbentley.framework.coredata.src5.rsm.RSMPureMemory;
 
 public class CoreData5Ctx extends CoreDataCtx {
 
-   private static final int         CTX_ID = 789;
+   private static final int        CTX_ID = 789;
 
-   protected final IConfigCoreData5 config;
-
-   private IByteRecordStoreFactory  rsFactory;
+   private IByteRecordStoreFactory rsFactory;
 
    public CoreData5Ctx(IConfigCoreData5 config, BOCtx boc) {
-      super(config, boc);
-      this.config = config;
-      
+      super(config == null ? new ConfigCoreData5Default(boc.getUC()) : config, boc);
+
+      if (this.getClass() == CoreData5Ctx.class) {
+         this.a_Init();
+      }
+
       //#debug
       toDLog().pInit("Created", this, CoreData5Ctx.class, "CoreData5Ctx", LVL_05_FINE, true);
    }
@@ -34,12 +35,17 @@ public class CoreData5Ctx extends CoreDataCtx {
 
    }
 
+   public IConfigCoreData5 getConfigCoreData5() {
+      return (IConfigCoreData5) config;
+   }
+
    /**
     * Creates an {@link IByteRecordStoreFactory} based on the {@link IConfigCoreData} parameters.
     * @param config
     * @return
     */
-   private IByteRecordStoreFactory createRMSFactory(IConfigCoreData5 config) {
+   private IByteRecordStoreFactory createRMSFactory() {
+      IConfigCoreData5 config = getConfigCoreData5();
       IRecordStoreManager rsm = null;
       //depends on launchvalues
       if (config.isVolatileData()) {
@@ -62,7 +68,7 @@ public class CoreData5Ctx extends CoreDataCtx {
    }
 
    public int getBOCtxSettingSize() {
-      return 0;
+      return IBOCtxSettingCoreData5.CTX_COREDATA_BASIC_SIZE;
    }
 
    /**
@@ -73,7 +79,7 @@ public class CoreData5Ctx extends CoreDataCtx {
     */
    public IByteRecordStoreFactory getByteRecordStoreFactory() {
       if (rsFactory == null) {
-         rsFactory = createRMSFactory(config);
+         rsFactory = createRMSFactory();
       }
       return rsFactory;
    }
@@ -95,13 +101,13 @@ public class CoreData5Ctx extends CoreDataCtx {
 
    //#mdebug
    public void toString(Dctx dc) {
-      dc.root(this, "CoreData5Ctx");
+      dc.root(this, CoreData5Ctx.class, 100);
       toStringPrivate(dc);
       super.toString(dc.sup());
    }
 
    public void toString1Line(Dctx dc) {
-      dc.root1Line(this, "CoreData5Ctx");
+      dc.root1Line(this, CoreData5Ctx.class);
       toStringPrivate(dc);
       super.toString1Line(dc.sup1Line());
    }
