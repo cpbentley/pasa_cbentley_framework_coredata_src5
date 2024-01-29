@@ -153,7 +153,7 @@ public class RSMRandomAccessFile extends RSMFileBased implements IRecordStoreMan
       RecordStoreHashMap store = null;
       try {
          DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(recordStoreFile)));
-         store = new RecordStoreHashMap(hoc, this, dis);
+         store = new RecordStoreHashMap(cdc, this, dis);
          dis.close();
       } catch (FileNotFoundException e) {
          throw e;
@@ -174,7 +174,7 @@ public class RSMRandomAccessFile extends RSMFileBased implements IRecordStoreMan
          if (!createIfNecessary) {
             throw new StoreNotFoundException(recordStoreName);
          }
-         recordStoreImpl = new RecordStoreHashMap(hoc, this, recordStoreName);
+         recordStoreImpl = new RecordStoreHashMap(cdc, this, recordStoreName);
          saveToDiskSecure(storeFile, recordStoreImpl);
       }
       recordStoreImpl.setOpen(true);

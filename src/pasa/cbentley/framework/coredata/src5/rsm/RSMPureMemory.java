@@ -101,7 +101,7 @@ public class RSMPureMemory extends RSMAbstract implements IRecordStoreManager {
          if (!createIfNecessary) {
             throw new StoreNotFoundException(recordStoreName);
          }
-         recordStoreImpl = new RecordStoreHashMap(hoc,this, recordStoreName);
+         recordStoreImpl = new RecordStoreHashMap(cdc,this, recordStoreName);
          recordStores.put(recordStoreName, recordStoreImpl);
       }
       recordStoreImpl.setOpen(true);

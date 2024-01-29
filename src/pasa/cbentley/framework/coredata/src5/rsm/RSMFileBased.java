@@ -25,51 +25,26 @@ import pasa.cbentley.framework.coredata.src5.engine.FilenameFilterRecordStore;
 import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
 import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
 
+/**
+ * 
+ * @author Charles Bentley
+ *
+ */
 public abstract class RSMFileBased extends RSMAbstract implements IRecordStoreManager {
 
-   final static String          RECORD_STORE_SUFFIX = ".rs";
-
-   protected final List<String> replaceChars        = new Vector<String>();
-
-   protected String escapeCharacter(String charcter) {
-      return "_%%" + (int) (charcter.charAt(0)) + "%%_";
-   }
-
-   public String fileName2RecordStoreName(String fileName) {
-      for (Iterator<String> iterator = replaceChars.iterator(); iterator.hasNext();) {
-         String c = (String) iterator.next();
-         String newValue = escapeCharacter(c);
-         if (c.equals("\\")) {
-            c = "\\\\";
-         }
-         fileName = fileName.replaceAll(newValue, c);
-      }
-      return fileName.substring(0, fileName.length() - RECORD_STORE_SUFFIX.length());
-   }
-
-   public String recordStoreName2FileName(String recordStoreName) {
-      for (Iterator<String> iterator = replaceChars.iterator(); iterator.hasNext();) {
-         String c = (String) iterator.next();
-         String newValue = escapeCharacter(c);
-         if (c.equals("\\")) {
-            c = "\\\\";
-         }
-         c = "[" + c + "]";
-         recordStoreName = recordStoreName.replaceAll(c, newValue);
-      }
-      return recordStoreName + RECORD_STORE_SUFFIX;
-   }
 
    protected File                                  baseFolder;
 
-   protected FilenameFilter                        filter           = new FilenameFilterRecordStore();
+   protected FilenameFilter                        filter              = new FilenameFilterRecordStore();
 
-   protected ExtendedRecordListener                recordListener   = null;
+   protected Hashtable<String, RecordStoreHashMap> openRecordStores    = new Hashtable<String, RecordStoreHashMap>();
 
-   protected Hashtable<String, RecordStoreHashMap> openRecordStores = new Hashtable<String, RecordStoreHashMap>();
+   protected ExtendedRecordListener                recordListener      = null;
 
-   public RSMFileBased(CoreData5Ctx hoc, File suitFolder) {
-      super(hoc);
+   protected final List<String>                    replaceChars        = new Vector<String>();
+
+   public RSMFileBased(CoreData5Ctx cdc, File suitFolder) {
+      super(cdc);
       baseFolder = suitFolder;
       replaceChars.add(":");
       replaceChars.add("*");
@@ -109,6 +84,25 @@ public abstract class RSMFileBased extends RSMAbstract implements IRecordStoreMa
             e.printStackTrace();
          }
       }
+   }
+
+   public String getRecordStoreSuffx() {
+      return cdc.getConfigCoreData5().getFileExtension();
+   }
+   protected String escapeCharacter(String charcter) {
+      return "_%%" + (int) (charcter.charAt(0)) + "%%_";
+   }
+
+   public String fileName2RecordStoreName(String fileName) {
+      for (Iterator<String> iterator = replaceChars.iterator(); iterator.hasNext();) {
+         String c = (String) iterator.next();
+         String newValue = escapeCharacter(c);
+         if (c.equals("\\")) {
+            c = "\\\\";
+         }
+         fileName = fileName.replaceAll(newValue, c);
+      }
+      return fileName.substring(0, fileName.length() - getRecordStoreSuffx().length());
    }
 
    public void fireRecordStoreListener(int type, String recordStoreName) {
@@ -154,13 +148,14 @@ public abstract class RSMFileBased extends RSMAbstract implements IRecordStoreMa
       RecordStoreHashMap store = null;
       try {
          DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(recordStoreFile)));
-         store = new RecordStoreHashMap(hoc, this, dis);
+         store = new RecordStoreHashMap(cdc, this, dis);
          dis.close();
       } catch (FileNotFoundException e) {
          throw e;
       } catch (IOException e) {
+         //#debug
+         toDLog().pEx("RecordStore.loadFromDisk: ERROR reading " + recordStoreFile.getName(), this, RSMFileBased.class, "loadFromDiskSecure", e);
          e.printStackTrace();
-         System.out.println("RecordStore.loadFromDisk: ERROR reading " + recordStoreFile.getName());
       }
       return store;
    }
@@ -178,7 +173,7 @@ public abstract class RSMFileBased extends RSMAbstract implements IRecordStoreMa
          if (!createIfNecessary) {
             throw new StoreNotFoundException(recordStoreName);
          }
-         recordStoreImpl = new RecordStoreHashMap(hoc, this, recordStoreName);
+         recordStoreImpl = new RecordStoreHashMap(cdc, this, recordStoreName);
          saveToDiskSecure(storeFile, recordStoreImpl);
       }
       recordStoreImpl.setOpen(true);
@@ -191,6 +186,19 @@ public abstract class RSMFileBased extends RSMAbstract implements IRecordStoreMa
       fireRecordStoreListener(ExtendedRecordListener.RECORDSTORE_OPEN, recordStoreName);
 
       return recordStoreImpl;
+   }
+
+   public String recordStoreName2FileName(String recordStoreName) {
+      for (Iterator<String> iterator = replaceChars.iterator(); iterator.hasNext();) {
+         String c = (String) iterator.next();
+         String newValue = escapeCharacter(c);
+         if (c.equals("\\")) {
+            c = "\\\\";
+         }
+         c = "[" + c + "]";
+         recordStoreName = recordStoreName.replaceAll(c, newValue);
+      }
+      return recordStoreName + getRecordStoreSuffx();
    }
 
    /**
@@ -220,8 +228,9 @@ public abstract class RSMFileBased extends RSMAbstract implements IRecordStoreMa
          recordStore.write(dos);
          dos.close();
       } catch (IOException e) {
+         //#debug
+         toDLog().pEx("RecordStore.saveToDisk: ERROR writting object to " + recordStoreFile.getName(), this, RSMFileBased.class, "saveToDiskSecure", e);
          e.printStackTrace();
-         System.out.println("RecordStore.saveToDisk: ERROR writting object to " + recordStoreFile.getName());
          throw new StoreException(e.getMessage());
       }
    }

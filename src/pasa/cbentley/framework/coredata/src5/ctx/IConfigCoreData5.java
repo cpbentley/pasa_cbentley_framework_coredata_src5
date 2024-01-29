@@ -16,6 +16,12 @@ public interface IConfigCoreData5 extends IConfigCoreData {
    public String getRMSPath();
 
    /**
+    * Default is .rs for recordstore
+    * @return
+    */
+   public String getFileExtension();
+
+   /**
     * Data root directory
     * @return
     */
