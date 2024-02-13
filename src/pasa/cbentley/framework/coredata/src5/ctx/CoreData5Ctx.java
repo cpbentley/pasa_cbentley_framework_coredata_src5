@@ -28,7 +28,7 @@ public class CoreData5Ctx extends CoreDataCtx {
       }
 
       //#debug
-      toDLog().pInit("Created", this, CoreData5Ctx.class, "CoreData5Ctx", LVL_05_FINE, true);
+      toDLog().pInit("", this, CoreData5Ctx.class, "Created@32", LVL_04_FINER, true);
    }
 
    protected void applySettings(ByteObject settingsNew, ByteObject settingsOld) {
