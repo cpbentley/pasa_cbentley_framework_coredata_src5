@@ -471,7 +471,7 @@ public class RecordStoreHashMap implements IRecordStore {
       for (Integer str : en) {
          byte[] data = records.get(str);
          sb.nl();
-         sb.append(str.toString() + " : " + cdc.getUCtx().getIU().debugString(data, ",", 10));
+         sb.append(str.toString() + " : " + cdc.getUC().getIU().debugString(data, ",", 10));
       }
    }
 
@@ -481,7 +481,7 @@ public class RecordStoreHashMap implements IRecordStore {
    }
 
    public UCtx toStringGetUCtx() {
-      return cdc.getUCtx();
+      return cdc.getUC();
    }
 
    //#enddebug
