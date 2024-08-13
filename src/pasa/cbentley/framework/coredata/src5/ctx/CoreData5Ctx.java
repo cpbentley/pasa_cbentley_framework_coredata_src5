@@ -16,7 +16,7 @@ import pasa.cbentley.framework.coredata.src5.rsm.RSMPureMemory;
 
 public class CoreData5Ctx extends CoreDataCtx {
 
-   private static final int        CTX_ID = 789;
+   private static final int        CTX_ID = 55;
 
    private IByteRecordStoreFactory rsFactory;
 
@@ -56,10 +56,10 @@ public class CoreData5Ctx extends CoreDataCtx {
 
          if (suitFolder.exists()) {
             //#debug
-            toDLog().pInit("Folder " + suitFolder.getAbsolutePath() + " exists. No need to create it.", this, CoreData5Ctx.class, "createRMSFactory", LVL_05_FINE, true);
+            toDLog().pInit("Folder " + suitFolder.getAbsolutePath() + " exists. No need to create it.", this, CoreData5Ctx.class, "createRMSFactory@59", LVL_05_FINE, true);
          } else {
             //#debug
-            toDLog().pInit("Folder " + suitFolder.getAbsolutePath() + " does not exists.", this, CoreData5Ctx.class, "createRMSFactory", LVL_05_FINE, true);
+            toDLog().pInit("Folder " + suitFolder.getAbsolutePath() + " does not exists.", this, CoreData5Ctx.class, "createRMSFactory@62", LVL_05_FINE, true);
          }
 
          rsm = new RSMFileSequential(this, suitFolder);
