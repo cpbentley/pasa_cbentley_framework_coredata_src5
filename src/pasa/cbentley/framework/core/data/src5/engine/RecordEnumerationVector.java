@@ -1,17 +1,17 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.core.data.src5.engine;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.Vector;
 
-import pasa.cbentley.framework.coredata.src4.ex.StoreInvalidIDException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordComparator;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordEnumeration;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordFilter;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordListener;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.core.data.src4.ex.StoreInvalidIDException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotOpenException;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordComparator;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordEnumeration;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordFilter;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordListener;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordStore;
 
 public class RecordEnumerationVector implements IRecordEnumeration {
 

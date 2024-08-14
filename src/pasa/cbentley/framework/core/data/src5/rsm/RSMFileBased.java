@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.rsm;
+package pasa.cbentley.framework.core.data.src5.rsm;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -15,15 +15,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-import pasa.cbentley.framework.coredata.src4.ex.StoreException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
-import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
-import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
-import pasa.cbentley.framework.coredata.src5.engine.FilenameFilterRecordStore;
-import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
-import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
+import pasa.cbentley.framework.core.data.src4.ex.StoreException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotFoundException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotOpenException;
+import pasa.cbentley.framework.core.data.src4.interfaces.ExtendedRecordListener;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.core.data.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.core.data.src5.engine.FilenameFilterRecordStore;
+import pasa.cbentley.framework.core.data.src5.engine.RecordStoreHashMap;
+import pasa.cbentley.framework.core.data.src5.interfaces.IRecordStoreManager;
 
 /**
  * 

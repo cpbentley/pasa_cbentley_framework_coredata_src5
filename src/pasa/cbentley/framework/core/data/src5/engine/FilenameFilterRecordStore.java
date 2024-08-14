@@ -1,9 +1,9 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.core.data.src5.engine;
 
 import java.io.File;
 import java.io.FilenameFilter;
 
-import pasa.cbentley.framework.coredata.src5.interfaces.ITechRSM;
+import pasa.cbentley.framework.core.data.src5.interfaces.ITechRSM;
 
 public final class FilenameFilterRecordStore implements FilenameFilter {
    public boolean accept(File dir, String name) {

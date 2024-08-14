@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.ctx;
+package pasa.cbentley.framework.core.data.src5.ctx;
 
 import pasa.cbentley.byteobjects.src4.core.interfaces.IBOCtxSettings;
 

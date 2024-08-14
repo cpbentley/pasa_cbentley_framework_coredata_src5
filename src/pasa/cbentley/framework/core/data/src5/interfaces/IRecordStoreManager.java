@@ -1,14 +1,14 @@
-package pasa.cbentley.framework.coredata.src5.interfaces;
+package pasa.cbentley.framework.core.data.src5.interfaces;
 
 import pasa.cbentley.core.src4.logging.IStringable;
-import pasa.cbentley.framework.coredata.src4.ex.StoreException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
-import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
-import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
-import pasa.cbentley.framework.coredata.src5.rsm.RSMFileBased;
-import pasa.cbentley.framework.coredata.src5.rsm.RSMFileSequential;
+import pasa.cbentley.framework.core.data.src4.ex.StoreException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotFoundException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotOpenException;
+import pasa.cbentley.framework.core.data.src4.interfaces.ExtendedRecordListener;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.core.data.src5.engine.RecordStoreHashMap;
+import pasa.cbentley.framework.core.data.src5.rsm.RSMFileBased;
+import pasa.cbentley.framework.core.data.src5.rsm.RSMFileSequential;
 
 /**
  * Interface used by the bridge to access {@link IRecordStore} evil static methods

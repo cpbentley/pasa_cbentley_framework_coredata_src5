@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.core.data.src5.engine;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,20 +12,20 @@ import java.util.Vector;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.coredata.src4.ctx.CoreDataCtx;
-import pasa.cbentley.framework.coredata.src4.engine.Request;
-import pasa.cbentley.framework.coredata.src4.ex.StoreException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreFullException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreInvalidIDException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
-import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordComparator;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordEnumeration;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordFilter;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordListener;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
-import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
-import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
+import pasa.cbentley.framework.core.data.src4.ctx.CoreDataCtx;
+import pasa.cbentley.framework.core.data.src4.engine.Request;
+import pasa.cbentley.framework.core.data.src4.ex.StoreException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreFullException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreInvalidIDException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotOpenException;
+import pasa.cbentley.framework.core.data.src4.interfaces.ExtendedRecordListener;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordComparator;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordEnumeration;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordFilter;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordListener;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.core.data.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.core.data.src5.interfaces.IRecordStoreManager;
 
 /**
  * Implementation of {@link IRecordStore} using {@link Hashtable}.

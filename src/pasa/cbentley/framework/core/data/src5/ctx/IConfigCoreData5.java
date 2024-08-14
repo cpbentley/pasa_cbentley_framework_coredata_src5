@@ -1,6 +1,6 @@
-package pasa.cbentley.framework.coredata.src5.ctx;
+package pasa.cbentley.framework.core.data.src5.ctx;
 
-import pasa.cbentley.framework.coredata.src4.ctx.IConfigCoreData;
+import pasa.cbentley.framework.core.data.src4.ctx.IConfigCoreData;
 
 /**
  * Parameters for configuration of {@link CoreData5Ctx}

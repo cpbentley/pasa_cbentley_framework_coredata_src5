@@ -1,12 +1,12 @@
-package pasa.cbentley.framework.coredata.src5.rsm;
+package pasa.cbentley.framework.core.data.src5.rsm;
 
-import pasa.cbentley.framework.coredata.src4.db.IByteRecordStoreFactory;
-import pasa.cbentley.framework.coredata.src4.ex.StoreException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreFullException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
-import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
-import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
+import pasa.cbentley.framework.core.data.src4.db.IByteRecordStoreFactory;
+import pasa.cbentley.framework.core.data.src4.ex.StoreException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreFullException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotFoundException;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.core.data.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.core.data.src5.interfaces.IRecordStoreManager;
 
 /**
  * Bentley Framework visible side of the backend

@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.interfaces;
+package pasa.cbentley.framework.core.data.src5.interfaces;
 
 public interface ITechRSM {
 

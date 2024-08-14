@@ -1,16 +1,16 @@
-package pasa.cbentley.framework.coredata.src5.rsm;
+package pasa.cbentley.framework.core.data.src5.rsm;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
 
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.coredata.src4.ex.StoreException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotFoundException;
-import pasa.cbentley.framework.coredata.src4.interfaces.ExtendedRecordListener;
-import pasa.cbentley.framework.coredata.src4.interfaces.IRecordStore;
-import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
-import pasa.cbentley.framework.coredata.src5.engine.RecordStoreHashMap;
-import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
+import pasa.cbentley.framework.core.data.src4.ex.StoreException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotFoundException;
+import pasa.cbentley.framework.core.data.src4.interfaces.ExtendedRecordListener;
+import pasa.cbentley.framework.core.data.src4.interfaces.IRecordStore;
+import pasa.cbentley.framework.core.data.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.core.data.src5.engine.RecordStoreHashMap;
+import pasa.cbentley.framework.core.data.src5.interfaces.IRecordStoreManager;
 
 /**
  * RecordStore loaded when {@link RSMFileSequential} failed to load for any reason.

@@ -1,9 +1,9 @@
-package pasa.cbentley.framework.coredata.src5.ctx;
+package pasa.cbentley.framework.core.data.src5.ctx;
 
 import pasa.cbentley.byteobjects.src4.ctx.ConfigAbstractBO;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.coredata.src5.interfaces.ITechRSM;
+import pasa.cbentley.framework.core.data.src5.interfaces.ITechRSM;
 
 public class ConfigCoreData5Default extends ConfigAbstractBO implements IConfigCoreData5 {
 

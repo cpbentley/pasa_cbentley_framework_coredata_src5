@@ -1,4 +1,4 @@
-package pasa.cbentley.framework.coredata.src5.ctx;
+package pasa.cbentley.framework.core.data.src5.ctx;
 
 import java.io.File;
 
@@ -6,13 +6,13 @@ import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.ctx.BOCtx;
 import pasa.cbentley.byteobjects.src4.ctx.IConfigBO;
 import pasa.cbentley.core.src4.logging.Dctx;
-import pasa.cbentley.framework.coredata.src4.ctx.CoreDataCtx;
-import pasa.cbentley.framework.coredata.src4.ctx.IConfigCoreData;
-import pasa.cbentley.framework.coredata.src4.db.IByteRecordStoreFactory;
-import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
-import pasa.cbentley.framework.coredata.src5.rsm.RMSCreator;
-import pasa.cbentley.framework.coredata.src5.rsm.RSMFileSequential;
-import pasa.cbentley.framework.coredata.src5.rsm.RSMPureMemory;
+import pasa.cbentley.framework.core.data.src4.ctx.CoreDataCtx;
+import pasa.cbentley.framework.core.data.src4.ctx.IConfigCoreData;
+import pasa.cbentley.framework.core.data.src4.db.IByteRecordStoreFactory;
+import pasa.cbentley.framework.core.data.src5.interfaces.IRecordStoreManager;
+import pasa.cbentley.framework.core.data.src5.rsm.RMSCreator;
+import pasa.cbentley.framework.core.data.src5.rsm.RSMFileSequential;
+import pasa.cbentley.framework.core.data.src5.rsm.RSMPureMemory;
 
 public class CoreData5Ctx extends CoreDataCtx {
 

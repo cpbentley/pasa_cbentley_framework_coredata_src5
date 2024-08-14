@@ -1,12 +1,12 @@
-package pasa.cbentley.framework.coredata.src5.engine;
+package pasa.cbentley.framework.core.data.src5.engine;
 
 import java.io.RandomAccessFile;
 
-import pasa.cbentley.framework.coredata.src4.engine.Request;
-import pasa.cbentley.framework.coredata.src4.ex.StoreException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreInvalidIDException;
-import pasa.cbentley.framework.coredata.src4.ex.StoreNotOpenException;
-import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.core.data.src4.engine.Request;
+import pasa.cbentley.framework.core.data.src4.ex.StoreException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreInvalidIDException;
+import pasa.cbentley.framework.core.data.src4.ex.StoreNotOpenException;
+import pasa.cbentley.framework.core.data.src5.ctx.CoreData5Ctx;
 
 /**
  * Record the size of header.

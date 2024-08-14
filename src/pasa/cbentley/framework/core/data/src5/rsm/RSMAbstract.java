@@ -1,10 +1,10 @@
-package pasa.cbentley.framework.coredata.src5.rsm;
+package pasa.cbentley.framework.core.data.src5.rsm;
 
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDLog;
-import pasa.cbentley.framework.coredata.src5.ctx.CoreData5Ctx;
-import pasa.cbentley.framework.coredata.src5.interfaces.IRecordStoreManager;
+import pasa.cbentley.framework.core.data.src5.ctx.CoreData5Ctx;
+import pasa.cbentley.framework.core.data.src5.interfaces.IRecordStoreManager;
 
 public abstract class RSMAbstract implements IRecordStoreManager {
 
